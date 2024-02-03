@@ -220,6 +220,22 @@ Kadanthu pogum podhu, oru puthu kadhai thodarnthathu. Aasaiyilirundhu azhagiyum,
 Ithu varaikum, mullum kozhiyum, naayaiyum, oru kaaviyathil kaathalil irundu, oru uyiraga irukkum. Kaaviyathil, avanudaiya kaathalai rasikkum podhu, athu avan udan kaathal, avan udan kaaviyam aayirukkum. Adutha kaaviyam, avanudaiya kaathalai, mullum kozhiyin kaathalai, naayaiyin kaathalai, oru kaathal kaviyathil nirantharam thodarnthathu."""
 
 
+# Source: ChatGPT
+# Language spoken in Star Trek, used in 1 of the "other" language in the test dataset.
+KLINGON_TEXT = """QongDaq yIbaH, Heghlu'meH QaQ jajvam vItlhutlh. QaQ ghom jup 'e' yImej. QorDu' ghaH qeylIS, ghIlab ghu'vam ghu'vetlh cha'logh. Hurgh yInIDqa' tugh nuch, puqloD QaQ jatlh ghoS 'ej vItlhutlh. yInIDqa' yuQ mu'mey yIchep 'ej ghIlab vItlhutlh. vItlhutlh jatlh QI'yaH yInIDqa', Heghlu'meH tIn mup cha'logh. QaQ loD vItlhutlh 'ej 'oH QaQ jatlh, yuDaj QI'yaH 'oH QaQ jatlh 'ej Hurgh QaQ 'u'.
+
+HIq vItlhutlh, yInIDqa' HoD cha'logh. nuch loD QI'yaH QaQ jup mup, 'ej ghu'vetlh cha'logh. qeylIS ghaH 'oH vItlhutlh, ghaH 'oH cha'logh. Heghlu'meH vItlhutlh 'ej yInIDqa' QaQ jatlh. cha'logh 'oH yInIDqa' 'ej vItlhutlh 'oH QaQ jatlh. mup cha'logh, QaQ jup vItlhutlh. tlhIngan ghaH 'oH Hurgh, 'ej Hurgh QaQ jatlh 'ej mup cha'logh."""
+
+
+# Source: ChatGPT
+# Language spoken in Avatar, used in 1 of the "other" language in the test dataset.
+NAVI_TEXT = """Ri'i'r ulte ti'ng nari, lu skxawng lu titxur! Fte nga rivey, oel ngop kefyak? Niteng mi txonong, niwotx mi sawtute. Txopu ra'a awngahu, ke 'upe tiran, srak? Lu pilok, ma smuk, lu keyawr! Txo nga skxawng, slä nga tsun skxawngit. Oel tslivam, oel tsun fitseng oe tsat.
+
+Tsmukan, tirea' ftxey! Nitxan ni'it hia. Lu oeru txoa livu, ti'eyngit fko ra'a layu. Pxey, ayngaru seiyi irayo. Ting ayoe li'fya ayoengit hia. Tsun oe tsmuke, lu hasey! Sla tiran ni'ul, ti'efu ningay!
+
+Oel ngati kameie, ma eylan. Siltsana ayeylan, lu txantslusam. Txo nitxan awngahu, oeya sa'nok. Fitrr, tsun oe tsat, fitsengit tiran. Sla oel futa lu oeru prrte' lu siltsana. Tsat amip ra'a txantsan. Oel ngaru futa kifkey!"""
+
+
 LABELLED_FILE_PATH = "input.custom_correct.txt"
 UNLABELLED_FILE_PATH = "input.custom_test.txt"
 
@@ -256,4 +272,8 @@ with open(LABELLED_FILE_PATH, "w", encoding="utf-8") as labelled_file:
 
         for text in get_data_generator(TAMIL_TEXT):
             labelled_file.write(f"tamil {text}\n")
+            unlabelled_file.write(f"{text}\n")
+
+        for text in get_data_generator(KLINGON_TEXT + "\n" + NAVI_TEXT):
+            labelled_file.write(f"other {text}\n")
             unlabelled_file.write(f"{text}\n")
